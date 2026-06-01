@@ -20,13 +20,14 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Grant execute permission
-        run: chmod +x gradlew
+      - name: Install Gradle 8.7
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q gradle-8.7-bin.zip -d $HOME
+          echo "$HOME/gradle-8.7/bin" >> $GITHUB_PATH
 
       - name: Build Release APK
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --warning-mode=none
+        run: gradle assembleRelease --no-daemon --warning-mode=none
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
