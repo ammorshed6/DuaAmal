@@ -1,4 +1,7 @@
-name: Build DuaAmal APK
+- name: Build Release APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --warning-mode=none
 
 on:
   push:
