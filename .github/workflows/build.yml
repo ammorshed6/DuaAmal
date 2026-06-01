@@ -1,7 +1,4 @@
-- name: Build Release APK
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --warning-mode=none
+name: Build DuaAmal APK
 
 on:
   push:
@@ -27,7 +24,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew assembleRelease --no-daemon
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --warning-mode=none
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
